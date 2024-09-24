@@ -1,5 +1,6 @@
 console.log("file running.");
 
+const myBtn=document.getElementById("btn")
 
         // Function to display location
         function showLocation(position) {
@@ -36,15 +37,19 @@ console.log("file running.");
         }
 
         // Request user's location
-        if (navigator.geolocation) {
-            document.getElementById('status').innerText = "Requesting location...";
-            navigator.geolocation.getCurrentPosition(showLocation, showError, {
-                enableHighAccuracy: true, // Request high accuracy
-                timeout: 500, // Timeout if no response
-                maximumAge: 0 // Disable cached data
-            });
-        } else {
-            document.getElementById('status').innerText = "Geolocation is not supported by this browser.";
+        function runCode() {
+            if (navigator.geolocation) {
+                document.getElementById('status').innerText = "Requesting location...";
+                navigator.geolocation.getCurrentPosition(showLocation, showError, {
+                    enableHighAccuracy: true, // Request high accuracy
+                    timeout: 500, // Timeout if no response
+                    maximumAge: 0 // Disable cached data
+                });
+            } else {
+                document.getElementById('status').innerText = "Geolocation is not supported by this browser.";
+            }
         }
-    
+myBtn.addEventListener("click",runCode)
+
+
 
